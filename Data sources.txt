@@ -1,0 +1,4 @@
+﻿Film Data Source -> (https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies/data)
+
+
+Unemployment Data -> (https://www.kaggle.com/code/justin2028/unemployment-in-america-per-us-state-code-starter)

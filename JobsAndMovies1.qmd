@@ -1,0 +1,448 @@
+---
+title: "Final Project Data Analysis & Dashboard"
+author: "BG-9"
+format:
+  dashboard:
+    embed-resources: true
+    code-overflow: scroll
+theme: cosmo
+editor: visual
+execute:
+  echo: false
+---
+
+# I: Our Topic
+
+![](hollywood_sign.jpg.jpg){width=300px}
+
+## Row {height="35%"}
+
+### Topical Overview
+
+Our project explores how economic conditions influence the behavior of the U.S. film industry. In particular, we are looking into how unemployment rates in the United States effect Movie quality, financial performance, and overall production. Hypothetically, unemployment can change how movie-goers spend money, so it will be seeing how how this influences the film industry.
+
+### Big Picture Questions (Question 1)
+
+1.  **How does unemployment rate affect movie revenues? Do higher rates of unemployment cause more or less film profits? Does this relationship change based off of the year (COVID-19 epidemic)?**
+
+According to numberanalytics.com, due to COVID in 2020, there was a clear downwards trend in movie revenues partly because of the mass amount of movie theater closures and the rise of film streaming services like Netflix or Disney+. This accelerated the transition into streaming services and could have some interesting effects on the relationship between unemployment and movie revenue. COVID-19 also saw record high unemployment. This question is relevant to understanding the film industry because answering it gives us information on how the public interacts with the film industry over time and gives insight on the impact of unemployment and emerging technologies on the film industry as a whole.
+
+Source: <https://www.numberanalytics.com/blog/analyzing-cinema-box-office-revenue-fall>
+
+To answer this question we will used a film data set called “TMFB_movie_dataset_v11.csv” from Kaggle. Additionaly, we used another data set called "Unemployment in America Per US State.csv" from Kaggle which contains unemployment data sourced from the United States Bureau of Labor Statistics website.
+
+Film Data \_\_\> (<https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies/data>)
+
+Unemployment Data -\> (<https://www.kaggle.com/code/justin2028/unemployment-in-america-per-us-state-code-starter>).
+
+## Row {height="65%"}
+
+## Column {width="50%"}
+
+### Big Picture Questions (Question 2)
+
+2.  **Is unemployment associated with a decrease in the average rating of released movies?**
+
+Some have argued that, over time, movies have been getting worse, such as Roy Price in his substack article "Are movies actually getting worse?". This brings up the question, are movie reviews at all influenced by unemployment data? There are a number of reasons one could imagine this to be the case. Perhaps in times of economic hardship, film studios decide to release safer "cash cow" films that they know will generate lots of money but may not necesarily garner positive reviews. Alternatively, perhaps in times of economic hardship, people have less patience for bad films and are more willing to leave bad reviews. In our data, we may see a decrease in average movie quality in correlation with unemployment data. In our analysis, we use average and median TMDB ratings as an imperfect measure of perceived movie quality, while recognizing that ratings reflect audience responses rather than an objective measure of quality. This question is valuable because it may help reveal how unemployment changes consumer spending.
+
+Source: <https://pricepoint.substack.com/p/are-movies-actually-worse>
+
+Once again, to answer this question we will used a film data set called “TMFB_movie_dataset_v11.csv” from Kaggle. Additionally, we will again use the data set called "Unemployment in America Per US State.csv" from Kaggle which contains unemployment data sourced from the United States Bureau of Labor Statistics website.
+
+Film Data \_\_\> (<https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies/data>)
+
+Unemployment Data -\> (<https://www.kaggle.com/code/justin2028/unemployment-in-america-per-us-state-code-starter>).
+
+## Column {width="50%"}
+
+### Big Picture Questions (Question 3)
+
+3.  **Is unemployment at all correlated with the amount of movies released?**
+
+As an article by observer.com points out, the film industry has been on a general downward trend in recent years. Not only are fewer big films being produced, but the industry as a whole has been contracting. For us, this begs the question, is there a correlation between unemployment data and the amount of films released? The connection seems plausible because unemployed people would likely have less money for movies, thus incetivising less films to be released. Our question is important because visualizing this relationship between the amount of movies released and unemployment offers an important, concrete representation of an otherwise mostly anecdotal conjecture on how unemployment effects the production of movies. Furthermore, it gives us insight into how the industry reacts to the broader economy as a whole.
+
+Source: <https://observer.com/2024/05/hollywood-movie-industry-analysis/>
+
+We are using the same data sets from the previous questions to answer this question. We will use a film data set called “TMFB_movie_dataset_v11.csv” from Kaggle. Additional, we will again use the data set called "Unemployment in America Per US State.csv" from Kaggle which contains unemployment data sourced from the United States Bureau of Labor Statistics website.
+
+Film Data \_\_\> (<https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies/data>)
+
+Unemployment Data -\> (<https://www.kaggle.com/code/justin2028/unemployment-in-america-per-us-state-code-starter>).
+
+### Ethical Considerations
+
+**Ethical Considerations:** There are some considerations with the data sets we will use. As for the film data set, it is important to note that the data set is built by volunteers. TMDB is a crowdsourced website, and it is up to volunteers to document information about movies on the website. For this reason, there is a chance that errors or inaccuracies may slip through the cracks in the data set. Furthermore, it is important to mention that the film data set includes many small indie films that never even made it to theaters, and these small films may warp the results of an analysis. Finally, it should be noted that even the United States admits that their offical unemployment numbers may be slightly off at times.
+
+
+# Data Context
+
+## Row {height="55%"}
+
+## Column {width="60%"}
+
+### Movie Data set Details
+
+The movie data set that is called “TMFB_movie_dataset_v11.csv” is from Kaggle. The data represents all movies featured on TMDB, which is a popular film review website. The data is organized on kaggle by a data engineer with a username of "asaniczka," but the data itself is crowd-sourced by kaggle contributes. Almost all produced films are recorded on this website, alongside their title, release date, original language, etc. We are specifically interested in the ratings, box office performance, and release date columns. The data is recorded from extensive crowd sourcing, and the exact methods used by contributors to collect data are unknown. There are over 1.5 million recordings made, and the earliest films recorded are from 1902, while the latest films are recorded in early 2022. This database does not just contain films from the United States; it has nearly all international films. This data set represents a large amount of the population, as the audience review scores are based on a large aggregate of reviews, and the box office numbers are based on how consumers decided to spend their money.
+
+Film Data Source -\> (<https://www.kaggle.com/datasets/asaniczka/tmdb-movies-dataset-2023-930k-movies/data>)
+
+## Column {width="40%"}
+
+### United States Unemployment Data
+
+This data source about moives titled "Unemployment in America Per US State.csv" has also been pulled from Kaggle. The data is sourced from the United States Bureau of Labor Statistics website, which likely has the single most accurate assessment of United States employment. The Bureau of Labor Statistics is the entity that collected the data. It was organized by a user on Kaggle named "The Data Wrangler," who is an undergraduate at Stanford University and has a lot of Kaggle dataset contributions. The data set has information dating back to 1976, all the way up into 2025. The data is collected through a survey that the Bureau runs, which takes a sample of people in the United States and uses the information to extrapolate what the total unemployment numbers are. The dataset has numerous economic statistics, but we are only interested in the unemployment rate. The data contains only unemployment rates from each state, but not a national average, and so we will need to calculate the national average. Although this is the most accurate source of unemployment numbers in the U.S, even the government admits that the numbers could potentially be slightly off due to undocumented and freelance workers.
+
+Unemployment Data -\> (<https://www.kaggle.com/code/justin2028/unemployment-in-america-per-us-state-code-starter>
+
+## Row {height="45%"}
+
+### Data Context Summary
+
+# Data Setup and Merge
+
+## Row {height="20%"}
+
+### Data set and Library Imports
+
+#### Data set and Library Imports:
+
+```{r}
+#| echo: true
+#| output: false
+library(dplyr)
+library(ggplot2)
+library(plotly)
+library(scales)
+movie_df <- read.csv("C:/rfiles/TMDB_movie_dataset_v11.csv")
+
+
+unemployment_df <- read.csv("C:/rfiles/Unemployment in America Per US State - Copy.csv")
+```
+
+## Row {height="20%"}
+
+### Data Cleanup Explanation
+
+#### Data Cleanup
+
+Because the unemployment data is recorded by month and the movie data includes exact release dates, we must convert both data sets into a shared year-month date format before joining them. This allows us to match each movie with the unemployment rate from the month in which it was released. We first extract relevant data from the unemployment data set so we can calculate the overall unemployment rate.
+
+## Row {height="20%"}
+
+### Unemployment Cleanup Code
+
+```{r}
+#| echo: true
+#| output: false
+unemp_clean <- unemployment_df |>
+  mutate(
+  across(
+  c(
+  Total.Civilian.Labor.Force.in.State.Area,
+  Total.Unemployment.in.State.Area
+  ),
+    ~ as.numeric(gsub(",", "", trimws(.x)))
+    )
+  ) 
+```
+
+## Row {height="20%"}
+
+### National Unemployment Rate Calculation
+
+Then, we run the calculation that gets us the total unemployment rate throughout the country that we can work with. This is because we are not interested in looking at unemployment on a state by state basis. We are also trimming useless white space.
+
+```{r}
+#| echo: true
+#| output: false
+unemp_monthly_us <- unemp_clean |>
+  group_by(Year, Month) |>
+  summarize(
+  total_labor_force = sum(Total.Civilian.Labor.Force.in.State.Area, na.rm = TRUE),
+  total_unemployed  = sum(Total.Unemployment.in.State.Area, na.rm = TRUE),
+  unemployment_rate = 100 * total_unemployed / total_labor_force,
+  .groups = "drop"
+  )
+unemp_monthly_us <- unemp_monthly_us |>
+  mutate(date = as.Date(paste(Year, Month, "01", sep = "-")))
+```
+
+## Row {height="20%"}
+
+### Movie Date Cleanup Code
+
+As for the movie data set, we need to extract the numerical date values so it can be lined up with unemployment data set.
+
+```{r}
+#| echo: true
+#| output: false
+movies_clean <- movie_df |>
+  mutate(
+    release_date = as.Date(release_date),
+    Year  = as.integer(format(release_date, "%Y")),
+    Month = as.integer(format(release_date, "%m")),
+    date  = as.Date(paste(Year, Month, "01", sep = "-"))
+  ) |>
+  filter(!is.na(release_date))
+```
+
+## Row {height="20%"}
+
+### Data Merge Code
+
+#### Data Merge
+
+Now that the two data sets have been cleaned up and we have gotten relevant dates, we can merge them based on the date unemployment data was captured and what date a film was released on.
+
+```{r}
+#| echo: true
+#| output: false
+movies_with_unemp <- movies_clean |>
+  left_join(
+  unemp_monthly_us |> select(date, unemployment_rate),
+  by = "date"   )
+```
+
+# II: Question 1 Visualizations
+
+## Row {height="85%"}
+
+## Column {width="70%"}
+
+### Question 1 Visualization
+
+#### Question 1 Visualizations
+
+To answer the first question, we will graph average movie profits vs unemployment rates. We will focus on U.S.-produced movies released between 2001 and 2023, since unemployment data is complete for that period and more recent films are most relevant to our question. We also exclude extremely low-revenue titles to reduce the influence of records that may reflect obscure movies with limited releases. We group movies by unemployment rate ranges and calculate average profit, defined as revenue minus budget. We are also looking at films with a revenue over 100,000 USD and are from the United States as this is more relevant to our question.
+
+```{r}
+#| echo: true
+q1_data_vis <- movies_with_unemp |>
+  # unemployment data starts in 1976
+  filter(Year > 2000) |>
+  # removes 2024 data which is incomplete
+  filter(Year < 2024) |>
+  # match movie data with U.S. unemployment
+  filter(production_countries == "United States of America") |>
+  # remove extremely low revenue movies for higher quality revenue average
+  filter(revenue > 100000) |>
+  mutate(unemployment_rate_bins = cut(unemployment_rate,
+    breaks = seq(floor(min(unemployment_rate)),
+    ceiling(max(unemployment_rate)),
+    by = 1))) |>
+  group_by(unemployment_rate_bins) |>
+  summarize(
+  movie_prof_avg = mean(revenue - budget),
+  # finds mode of Year vector
+  most_common_year = Year |>
+    as.data.frame() |>
+    group_by(Year) |>
+    summarise(count = n()) |>
+    arrange(desc(count)) |>
+    slice(1) |>
+    pull(Year)
+  ) |>
+  ggplot() +
+  geom_col(aes(x = unemployment_rate_bins, y = movie_prof_avg, fill = most_common_year)) +
+  scale_fill_gradient(low = "gold", high = "purple") +
+  labs(
+    title = "Unemployment Rate and Average Movie Profits in the U.S.",
+    x = "Unemployment Rate (binned, width = 1)",
+    y = "Average Movie Profits",
+    fill = "Most Common Year"
+    )
+ggplotly(q1_data_vis)
+```
+
+## Column {width="30%"}
+
+### Question 1 Interpretation
+
+This graph gives us some insight on how the unemployment rate can effect movie revenue. There appears to possibly be a small correlation between unemployment rate and profits. Lower unemployment rates do seem to slightly correlate with more movie profits. It is important to note though, while some unemployment intervals have higher average profits than others, the overall pattern is uneven and seems to be heavily warped by 2020. This suggests that unemployment is not strongly associated with average movie profitability in a simple linear way, but perhaps a weak association.
+
+# II: Question 2 Visualizations
+
+## Row {height="55%"}
+
+## Column {width="65%"}
+
+### Average Movie Ratings Visualization
+
+#### Question 2 Visualizations
+
+To answer our second question, we first try to compare yearly average movie ratings versus yearly unemployment rates for U.S.-produced films. We once again filter out all films not made in the United States and films that had under 100,000 in revenue.
+
+```{r}
+#| echo: true
+movies_with_unemp |>
+  filter(Year > 1975) |>
+  filter(Year < 2024) |>
+  filter(revenue > 100000) |>
+  filter(production_countries == "United States of America") |>
+  group_by(Year) |>
+  summarize(
+  yearly_rating_avg = mean(vote_average),
+  yearly_unemp = mean(unemployment_rate / 100)
+  ) |>
+  ggplot() +
+  geom_point(aes(x = yearly_unemp, y = yearly_rating_avg, color = Year)) +
+  scale_x_continuous(labels = percent_format(accuracy = 1)) +
+  scale_color_gradient(low = "gold", high = "purple3") +
+  labs(
+    title = "Yearly Unemployment Rate and Average Movie Ratings in the U.S.",
+    x = "Yearly Unemployment Rate",
+    y = "Yearly Average Movie Ratings (0-10)"
+    )
+```
+
+## Column {width="35%"}
+
+### Average Ratings Interpretation
+
+It does look like there is a small negative correlation, but its very insignificant. As unemployment goes up, ratings seem to slightly go down. We will try to take the median of the yearly ratings instead to get a more stable perspective.
+
+## Row {height="45%"}
+
+## Column {width="65%"}
+
+### Median Movie Ratings Visualization
+
+```{r}
+#| echo: true
+movies_with_unemp |>
+  filter(Year > 1975) |>
+  filter(Year < 2024) |>
+  filter(revenue > 100000) |>
+  filter(production_countries == "United States of America") |>
+  group_by(Year) |>
+  summarize(
+  yearly_rating_med = median(vote_average),
+  yearly_unemp = mean(unemployment_rate / 100)
+  ) |>
+  ggplot() +
+  geom_point(aes(x = yearly_unemp, y = yearly_rating_med, color = Year)) +
+  scale_x_continuous(labels = percent_format(accuracy = 1)) +
+  scale_color_gradient(low = "gold", high = "purple3") +
+  labs(
+    title = "Yearly Unemployment Rate and Median Movie Ratings in the U.S.",
+    x = "Yearly Unemployment Rate",
+    y = "Yearly Median Movie Ratings (0-10)"
+    )
+```
+
+## Column {width="35%"}
+
+### Median Ratings Interpretation
+
+This graph seems to also show a slight negative correlation and could indicate that high unemployment may be correlated with lower quality movies even after we decided to look at the median score. The correlation is not particularly strong, but it does seem to be there a little bit.
+
+```         
+```
+
+# II: Question 3 Visualizations
+
+## Row {height="40%"}
+
+## Column {width="65%"}
+
+### Initial Scatter Plot
+
+To evaluate our third question, we will use a scatterplot to compare yearly unemployment rates with the yearly amount of movies released. This first scatter plot is designed to help us understand what an appropriate time frame would be to analyze the correlation between unemployment and the amount of movies released.
+
+```{r}
+#| echo: true
+movies_with_unemp |>
+  filter(Year > 1975) |>
+  filter(Year < 2024) |>
+  group_by(Year) |>
+  summarize(
+  movie_yearly_count = n(), yearly_unemp = mean(unemployment_rate)
+  ) |>
+  ggplot() +
+  geom_point(aes(x = yearly_unemp, y = movie_yearly_count, color = Year)) +      scale_color_gradient(low = "red", high = "green") +
+  labs(
+    x = "Yearly Unemployment Rate",
+    y = "Yearly Sum of Movie Count"
+    )
+```
+
+## Column {width="35%"}
+
+### Initial Scatter Plot Interpretation
+
+With this graph we can see some kind of correlation for years past the 1990s but we should consider filter out all movies not made in the U.S and focus only on movies that made more than \$100,000 dollars of revenue. This is because our motive behind our question is to understand the reaction of the film industry and large movie studios in regards to unemployment.
+
+## Row {height="60%"}
+
+## Column {width="65%"}
+
+### Filtered Scatter Plot
+
+```{r}
+#| echo: true
+q3_data_vis <- movies_with_unemp |>
+  filter(Year > 1975) |>
+  filter(Year < 2024) |>
+  filter(revenue > 100000) |>
+  filter(production_countries == "United States of America") |>
+  group_by(Year) |>
+  summarize(
+    movie_yearly_count = n(),
+    yearly_unemp = mean(unemployment_rate / 100)
+  ) |>
+  ggplot() +
+  geom_point(aes(x = yearly_unemp, y = movie_yearly_count, color = Year)) +
+  scale_x_continuous(labels = scales::percent_format(accuracy = 1)) +
+  scale_color_gradient(low = "red", high = "green") +
+  labs(
+    title = "Yearly Unemployment Rate and Count of Released Movies in the U.S.",
+    x = "Yearly Unemployment Rate",
+    y = "Yearly Sum of Movie Count"
+  )
+
+q3_data_vis
+```
+
+## Column {width="35%"}
+
+### Filtered Scatter Plot Interpretation
+
+This graphs informs us that there is essentially no correlation between unemployment rate and and the amount of movies released. There might be the slightest negative correlation, but nothing very significant.
+
+# III: Conclusion
+
+## Row {height="70%"}
+
+### Our Three Major Takeaways
+
+## Our Three Major Takeaways:
+
+#### 1.
+
+Our first major takeaway from this project is that there may be a weak correlation between employment numbers and movie revenue. The graph we developed does display movie revenue going down as unemployment numbers grow. However, based on our graph, it is hard to say exactly how COVID-19 affected film revenue. This is because both the most profitable and least profitable time periods came from 2020, according to our analysis. It is not clear why this is the case, and it may come down to a quirk in the data set we are not yet aware of. It should be noted though that the correlation in this graph may not be very strong and may just be down to luck. Probably the biggest weakness in this data set is that there are so many movies out there that don't get proper theatrical releases, thus getting not getting a ton of revenue, and these may be warping our data set. A future direction we would like to take this project is to better define what movie studios constitute as part of the "film industry".
+
+Our second major takeaway from this project is that there does seem to be a minor correlation between film ratings and unemployment rates. As unemployment goes up, ratings for films seem to go down. The correlation is weak, but it seems to appear. So to answer our initial question, "Is unemployment associated with a decrease in the average rating of released movies?", the answer appears to be yes, based on our graph. Something our graph may not be properly accounting for is how ratings and unemployment numbers correlate outside of the United States or for films that have a revenue below 100,000 USD. A future direction we would like to take is figuring out why lower employment rates may bring down reviews.
+
+Our final major takeaway from this project is that there does not appear to be a clear correlation between the number of movies released and the unemployment rate. At first, it seemed there might have been a weak correlation, but after filtering out smaller films and films produced outside of the United States, we didn't see a correlation. If there was one aspect of this analysis that may be a bad estimate, it would be the fact that we are filtering out movies that have a revenue below 100,000 USD. We would imagine that, as creating films has gotten easier and more accessible, we would see more movies coming out in general. However, this aspect is not accounted for in our data set and may be warping how things may be counted. If there is one direction we would like to pursue to better understand this question is understanding if more films are being released nowadays compared to in the past.
+
+## Row {height="30%"}
+
+## Column {width="65%"}
+
+### Coding Notes
+
+## Coding Notes:
+
+**Tools that we used from outside of the class:**
+
+We imported the scales library that allowed us to use the percent_format() function. This function converts decimals into percentages. This allowed us to develop our scatter plot with fewer lines of code. I consulted ChatGPT about what an optimized way to calculate percentages would be. This is what it recommended.
+
+We also used the as.Date() function, which I don't believe we covered in class. This function allows us to take calendar dates and represent them strings or numerical values. Once again, I consulted ChatGPT for an optimized way to get dates, and it recommended this tool. It is part of base R.
+
+Finally, we used the plotly package to convert one of our ggplot graphs into an interactive visualization using ggplotly(). This allows users to hover over points and view additional information directly within the dashboard.
+
+## Column {width="35%"}
+
+### Group Information
+
+BG-9
